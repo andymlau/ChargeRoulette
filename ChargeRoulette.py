@@ -49,6 +49,8 @@ print " "
 print "  Structure contains "+str(nLines)+" residues across "+str(len(chains))+" chains: "+str(chainsPrint)
 print "  Number of chargable residues: "+str(len(basicLines))
 
+charge_str = []
+
 if args.extract_only == True:
     # Create Output File
     OutputFileName = filename[:-4] + '.basic.pdb'
@@ -84,5 +86,40 @@ else:
 
         print "  Output PDB saved to "+str(OutputFileName)
 
+        lysines = []
+        arginines = []
+        histidines = []
+
+        for residue in sample:
+            if residue[17:20] == 'LYS':
+                lysines.append(residue[23:26])
+            if residue[17:20] == 'ARG':
+                arginines.append(residue[23:26])
+            if residue[17:20] == 'HIS':
+                histidines.append(residue[23:26])
+
+        lysines = ' '.join(lysines)
+        arginines = ' '.join(arginines)
+        histidines = ' '.join(histidines)
+
+        charge_str.append("Charge roulette spin No."+str(i+1)+":")
+        charge_str.append("   Charges correspond to file "+str(OutputFileName))
+        charge_str.append("  ")
+        charge_str.append("   set lysines {"+str(lysines)+"}")
+        charge_str.append("   set arginines {"+str(arginines)+"}")
+        charge_str.append("   set histidines {"+str(histidines)+"}")
+        charge_str.append("  ")
+
+# Create Output File for expect script code
+OutputFileName = filename[:-4] + '.expect_charges.txt'
+OutputFile = open(OutputFileName, 'w')
+
+for line in charge_str:
+    OutputFile.write(line + '\n')
+
+OutputFile.flush()
+OutputFile.close()
+
+print "  All charge roulette residues saved to " + str(OutputFileName)
 
 print " "
