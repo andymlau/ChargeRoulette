@@ -67,7 +67,7 @@ if args.extract_only == True:
 else:
     for i in range(0, int(nSets)):
 
-        #random.shuffle(basicLines)
+        random.shuffle(basicLines)
 
         sample = basicLines[0:int(nQ)]
 
@@ -84,20 +84,5 @@ else:
 
         print "  Output PDB saved to "+str(OutputFileName)
 
-        lysines = []
-        arginines = []
-        histidines = []
-
-        for residue in sample:
-            if residue[17:20] == 'LYS':
-                lysines.append(residue[22:27])
-            if residue[17:20] == 'ARG':
-                arginines.append(residue[22:27])
-            if residue[17:20] == 'HIS':
-                histidines.append(residue[23:26])
-
-        print lysines
-        print arginines
-        print histidines
 
 print " "
