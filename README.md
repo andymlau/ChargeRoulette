@@ -96,7 +96,7 @@ bash topol_to_txt.sh <0_topol_Protein_chain_D.itp>
 
 The topol_to_txt.sh script reads through each residue of the topology file and returns the residues which have a +1 charge - these being your lys, arg and his residues from the last script. 
 
-If your charges are spread across multiple chains, you will need to run topol_to_txt.sh on each chain-specific topology file. To check that the correct charges have been distributed, open the basic_nQ<n>_set<s>.pdb file that you used from ChargeRoulette.py in PyMOL and paste the output of topol_to_txt.sh:
+If your charges are spread across multiple chains, you will need to run topol_to_txt.sh on each chain-specific topology file. To check that the correct charges have been distributed, open the basic_nQ_set.pdb file that you used from ChargeRoulette.py in PyMOL and paste the output of topol_to_txt.sh:
 
 ```
 select qRes=(i;14,48,121,146,176,186,263)
@@ -108,3 +108,5 @@ the qRes selection should match the residues within your pdb file.
 ### Additional Information
 
 All testing was performed on GROMACS version 5.1.2 on a Mac running macOS Sierra Version 10.12.6
+
+For more information, please contact Andy at andy.lau@kcl.ac.uk
