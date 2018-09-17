@@ -9,13 +9,14 @@ set arg_q {Which ARGININE type do you want for residue (\d+)}
 set asp_q {Which ASPARTIC ACID type do you want for residue (\d+)}
 set glu_q {Which GLUTAMIC ACID type do you want for residue (\d+)}
 set his_q {Which HISTIDINE type do you want for residue (\d+)}
-set ter_q {terminus type}
+set start_ter_q {start terminus type}
+set end_ter_q {end terminus type}
 
-set lysines {535 201 114 382 195 423 816 291}
-   set arginines {708 773 648  56   6 171 165 695}
-   set histidines {547 363 310}
+set lysines {9 45 71 90 132 168 213 249 291 336 372 440}
+set arginines {248 272 333 395}
+set histidines {}
 
-spawn bash 0_pdb2gmx_gas_oplsaa_merge_res-assign.sh
+spawn bash 0_pdb2gmx_autoAssign_chargemover.sh
 
 expect  {
 
@@ -62,10 +63,14 @@ expect  {
         exp_continue
     }
 
-    #Ter charge and default settings; N-terminus: 0 = NH3+, 1 = Zwitterion_NH3+, 2 = NH2, 3 = none
-    #								  C-terminus: 0 = GLY-COOH, 1 = GLY-Zwitterion-COO-, 2 = GLY-COOH
-    #								  3 = none
-    -re $ter_q {
+    #Start Ter charge and default settings; N-terminus: 0 = NH3+, 1 = Zwitterion_NH3+, 2 = NH2, 3 = none
+    -re $start_ter_q {
+        send "2\r"
+        exp_continue
+    }
+
+    #End Ter charge and default settings; C-terminus: 0 = COO-, 1 = Zwitterion-COO-, 2 = COOH, 3 = none
+    -re $end_ter_q {
         send "2\r"
         exp_continue
     }
