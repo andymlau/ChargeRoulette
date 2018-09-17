@@ -8,10 +8,12 @@ from numpy import unique
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--input","-i", help='The PDB output from DEPTH.',type=str)
-parser.add_argument("--nQ","-n", help='Number of charges to sample.',type=int)
-parser.add_argument("--nSets","-s", help='Number of sets of charges to generate.',type=int,default=1)
-parser.add_argument("--extract_only","-eo", help="Extract basic residues only without sampling.",action="store_true",default='False')
+parser.add_argument("--input", "-i", help='The PDB output from DEPTH.', type=str)
+parser.add_argument("--nQ", "-n", help='Number of charges to sample.', type=int)
+parser.add_argument(
+    "--nSets", "-s", help='Number of sets of charges to generate.', type=int, default=1)
+parser.add_argument("--extract_only", "-eo",
+                    help="Extract basic residues only without sampling.", action="store_true", default='False')
 
 args = parser.parse_args()
 
@@ -46,7 +48,8 @@ for line in inputFileLines:
 chainsPrint = ', '.join(chains)
 
 print " "
-print "  Structure contains "+str(nLines)+" residues across "+str(len(chains))+" chains: "+str(chainsPrint)
+print "  Structure contains "+str(nLines)+" residues across " + \
+    str(len(chains))+" chains: "+str(chainsPrint)
 print "  Number of chargable residues: "+str(len(basicLines))
 
 charge_str = []
@@ -92,15 +95,15 @@ else:
 
         for residue in sample:
             if residue[17:20] == 'LYS':
-                lysines.append(residue[23:26])
+                lysines.append(residue[22:26])
             if residue[17:20] == 'ARG':
-                arginines.append(residue[23:26])
+                arginines.append(residue[22:26])
             if residue[17:20] == 'HIS':
-                histidines.append(residue[23:26])
+                histidines.append(residue[22:26])
 
-        lysines = ' '.join(lysines)
-        arginines = ' '.join(arginines)
-        histidines = ' '.join(histidines)
+        lysines = ' '.join([str(x) for x in list(sorted(map(int, lysines)))])
+        arginines = ' '.join([str(x) for x in list(sorted(map(int, arginines)))])
+        histidines = ' '.join([str(x) for x in list(sorted(map(int, histidines)))])
 
         charge_str.append("Charge roulette spin No."+str(i+1)+":")
         charge_str.append("   Charges correspond to file "+str(OutputFileName))
