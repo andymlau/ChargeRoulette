@@ -92,6 +92,10 @@ Running charge_roulette.py
 
 - The 'Total charge' above should be checked in each instance to make sure that the total molecule charge is correct. 
 
+#### Runtime
+
+ChargeRoulette has linear time complexity and takes roughly 2 seconds to sample 10 charges from a 157 residue long protein, i.e. n_sample=10 will take ~20 seconds.
+
 ### Other useful customisations:
 
 #### Changing the pdb2gmx run command
