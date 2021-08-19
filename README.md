@@ -54,7 +54,7 @@ For example, running ChargeRoulette with n_charges=10, and n_samples=5, will ran
 4. A number of output files are written to the user-defined output folder:
 
 - **2GRN.pdb-residue_depth_samples.pdb** - a multi-state pdb file where each state contains the charge-carrying residues. This file is for visualisation only. It can be quite useful to open together this file and the original input pdb, in PyMOL to visualise where the charges have been assigned to. This strategy can be used iteratively to test different distributions of charges and test how they affect the simulation, for example. 
-- **2GRN.pdb-residue_depth_samples.txt** - a summary of the residues that were selected in each sample. `1,{14 18 30 49 59 74 101 146},{141},{20}` is in the format: `sample_no, LYS residue numbers, ARG residue numbers, HIS residue numbers'. 
+- **2GRN.pdb-residue_depth_samples.txt** - a summary of the residues that were selected in each sample. `1,{14 18 30 49 59 74 101 146},{141},{20}` is in the format: `sample_no,{LYS residue numbers},{ARG residue numbers},{HIS residue numbers}'. 
 - **sample_x** - subfolders containing the pdb2gmx output files for each set of charges. Running ChargeRoulette with n_samples=10 will generate 10 subfolders. 
 
 Within `sample_x` subfolders:
@@ -99,4 +99,4 @@ By default the pdb2gmx run command is:
 ```
 gmx pdb2gmx -f ${input} -o ${jobdir}/out.pdb -p ${jobdir}/topol.top -i ${jobdir}/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
 ```
-The flags after -i can be customised by editing the `fflags` variable on line 23 of `run_charge_roulette.sh`. 
+The flags after `-i` can be customised by editing the `fflags` variable on line 23 of `run_charge_roulette.sh`. 
