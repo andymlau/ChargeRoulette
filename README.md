@@ -1,112 +1,100 @@
-## gasMD: Automating pdb2gmx for gas phase MD simulations
+# ChargeRoulette: Automating pdb2gmx for gas phase MD simulations
 
-These scripts can be used to automate the charge assigning stage of GROMACS pdb2gmx for gas phase molecular dynamics simulations. Gas phase simulations of charged protein complexes are typically performed for comparisons with experimental structural mass spectrometry measurements.  
+These scripts can be used to automate the charge assigning step of GROMACS pdb2gmx for gas phase molecular dynamics simulations. Gas phase simulations of charged protein complexes are typically performed for comparisons with experimental structural mass spectrometry measurements.  
 
-Assigning charges to proteins and protein complexes can be performed through the following steps: 
-1. Neutralisation of all existing charges from the protein pdb file, through setting all chargable residues and termini to protonation states which yield neutral charges.
-2. Distribution of a number of charges (usually positive and reflects experimental charge states of species) across the surface of a protein, to mimic experimental surface ionisation. This is done through modifying the protonation state of positively chargable residues (Lys/Arg/His) to be +1 each. 
-3. Continue with rest of GROMACS simulation protocol - not covered here. 
+Assigning charges using the pdb2gmx interactive tool (via -lys -arg -his etc. flags) is very tedious, as the user the prompted to key in a number, e.g. '0' for a non-protonated (-1) aspartic acid, or '1' to have it protonated (0), for every residue in the input file. Hence the motivation for this repo is to put together scripts that can automatically assign such protonation states without needing any input from the user. 
 
-### ChargeRoulette.py
+A few assumptions are made in terms of how charges are initialised:
+1. Mass spec typically produces net positively charged ions, and so to produce such representations, all acidic residues are set to neutral (i.e. protonated) and a number of charges are spread randomly across only the basic residues (lys, arg and his). Termini are also left neutral. 
+2. Charge-carrying residues are selected randomly from a set of candidate residues that meet the selection criteria, defined as all lys, arg and his residues within 5Å depth of the surface of the molecule. 
+3. ChargeRoulette does not clean your file for you - it is assumed that your pdb file is set up properly, i.e. chain and residue ids are correct and that any chain breaks in the molecule are intended or at least acknowledged. For general pdb file manipulation, [pdb-tools](http://www.bonvinlab.org/pdb-tools/) from the Bonvin Lab is recommended.
 
-ChargeRoulette.py takes as input, a pdb file of a protein or protein complex with its b-factors swapped with the atomic depth of each residue. Depth calculation can be performed with http://cospi.iiserpune.ac.in/depth/htdocs/index.html - I refer to this as 'depth.pdb' here (see *4JFO.pdb-atomic_depth.pdb* in example folder). ChargeRoulette.py extracts all chargable positive residues: Lys, Arg, His, within 5Å of the protein surface. A number of these residues are then randomly selected. 
+### Prerequisites:
 
-```
-python ChargeRoulette.py -i <input> -n <number of charges> -s <num of sets of charges>
-```
+- [GROMACS](https://manual.gromacs.org/documentation/) (tested on version 2021.3 released August 18th, 2021)
+- The 'expect' program for linux: https://linux.die.net/man/1/expect
+- At least Python 3.
 
-```
-Inputs
--i <input>    depth.pdb file
--n <charges>  charge state of protein desired, e.g. 13 for 13+ from mass spec
--s <sets>     number of sets of -n to generate
+### Instructions for use:
 
-Outputs
-..basic_nQ<n>_set<s>.pdb    pdb file containing only residues selected to be charged. s number of files are generated, sampling n number of residues
-..expect_charges.txt        Residues from ..basic_nQ<n>_set<s>.pdb are printed here to be used for the next stage
-expect_autoAssign.exp
-```
+The following files are distributed:
+- **run_charge_roulette.sh** - This is the main chargeroulette script that should be run.
+- **residuetypes.dat** - A custom residuetypes.dat file that includes 'LYSN' to allow lysines to be charged. 
+- **README.md** - This readme file.
+- **scripts/charge_roulette.py** - Handles input pdb parsing and charge sampling. 
+- **scripts/utils.py** - Functions for charge_roulette.py
+- **examples** - Example input and output files. 
 
-### expect_autoAssign.exp
+#### Inputs:
+1. Given an input pdb file, such as `examples/2GRN.pdb`, the file must first be submitted to the DEPTH server found [here](http://cospi.iiserpune.ac.in/depth).
+2. A zip file containing outputs can be downloaded from the server once the job has been completed. The output file with the suffix `-residue_depth.pdb` should be used for ChargeRoulette.
 
-The pdb2gmx program of GROMACS is used to convert pdb files into a GROMACS-compatible topology for molecular dynamics simulations. The output file of pdb2gmx will inherit the default protonation states (and charge state) from the input pdb file. Users can use the -lys -his -arg -asp -glu and -ter commands to interactively select protonation states of each residue. This method cycles over every residue individually, is laborious and accidental mistakes in typing can result in the user needing to repeat pdb2gmx several times before the correct charge state is assigned. 
-
-expect_autoAssign.exp is an expect/tcl script which can automatically set the protonation states of residues which are output from ChargeRoulette.py. 
-
-You will need to set up the expect_autoAssign.exp and pdb2gmx_gas_oplsaa_merge_res-assign.sh scripts before running the expect command using:
+3. The command for running charge roulette is:
 
 ```
-expect expect_autoAssign.exp
+bash run_charge_roulette.sh input.pdb n_charges n_samples output_directory 
 ```
-Within expect_autoAssign.exp residues that are to be charged are set up in the following format:
-
+e.g. 
 ```
-set lysines {535 201 114 382 195 423 816 291}
-set arginines {708 773 648 56 6 171 165 695}
-set histidines {547 363 310}
+bash run_charge_roulette.sh examples/inputs/2GRN.pdb-residue_depth.pdb 10 3 examples/test
 ```
 
-The ..expect_charges.txt output of ChargeRoulette.txt contains lists which are substituted into the expect_autoAssign.exp script. 
+- **input.pdb** (path) is the output file of DEPTH, e.g. `2GRN.pdb-residue_depth.pdb`
+- **n_charges** (int) is the number of charges that will be assigned to the surface of the molecule. This should match the experimental charge state of the protein observed via native mass spectrometry. 
+- **n_samples** (int) is the number of charge samples, e.g. 10 will produce 10 alternative charge configurations of your input molecule. 
+- **output_directory** (path) is the path that the output files should be saved to. 
 
-Responses to pdb2gmx are set up in the following format:
+For example, running ChargeRoulette with n_charges=10, and n_samples=5, will randomly distribute 10 charges on the surface of input.pdb, 5 times.
 
-```
-#Lysine charge and default settings; 0 = non-protonated (0), 1 = protonated (+1)
-    -re $lys_q {
-        if {$expect_out(1,string) in $lysines} {
-            send "1\r"
-        } else {
-            send "0\r"
-        }
-        exp_continue
-    }
-```
-If expect encounters a residue listed in lysines/arginines/histidines, *1* will be sent, setting the protonation state to +1 for that residue. All other residues are set to *0* or non-protonated. pdb2gmx will terminate after the topol.top file is generated.
+#### Outputs:
+4. A number of output files are written to the user-defined output folder:
 
-The actual pdb2gmx program is spawned through the pdb2gmx_gas_oplsaa_merge_res-assign.sh script from within expect. The pdb2gmx command is set up as:
+- **2GRN.pdb-residue_depth_samples.pdb** - a multi-state pdb file where each state contains the charge-carrying residues. This file is for visualisation only. It can be quite useful to open together this file and the original input pdb, in PyMOL to visualise where the charges have been assigned to. This strategy can be used iteratively to test different distributions of charges and test how they affect the simulation, for example. 
+- **2GRN.pdb-residue_depth_samples.txt** - a summary of the residues that were selected in each sample. `1,{14 18 30 49 59 74 101 146},{141},{20}` is in the format: `sample_no, LYS residue numbers, ARG residue numbers, HIS residue numbers'. 
+- **sample_x** - subfolders containing the pdb2gmx output files for each set of charges. Running ChargeRoulette with n_samples=10 will generate 10 subfolders. 
 
-```
-gmx pdb2gmx -f 2_CRL2_6784.pdb -o 0_out.pdb -v -heavyh -ff oplsaa -p 0_topol.top -i 0_posre.itp -water none -lys -arg -asp -glu -his -ter
-```
+Within `sample_x` subfolders:
+- ***auto_assign.exp*** - an expect script generated by ChargeRoulette used to interact with pdb2gmx.
+- ***run_pdb2gmx.sh*** - a bash script containing the pdb2gmx command.
+- **pdb2gmx.log** - a log file containing the stdout of pdb2gmx. 
+- **out.pdb** - a pdb2gmx output file. 
+- **topol.top** - a pdb2gmx output file. 
+- **posre.itp** - a pdb2gmx output file. 
 
-Please consult GROMACS documentation on pdb2gmx for the full definition of each flags. The relevant flags to automatic charge assigning are the following:
+(Files in italics above can be deleted once the program has finished.)
 
-```
--f <input>              Pdb file initially submitted to DEPTH server - the depth.pdb CANNOT be used. 
--p <topol>              output name for the topology file
--lys, etc.              triggers pdb2gmx interactive residue protonation state selector
-```
-
-**If your system has more than one chain**
-As expect_autoAssign.exp relies on recognition of a single residue number, if chain A contains a LYS 200 to be charged and chain B coincidentally has LYS at position 200, both residues will be charged.
-
-**Solution 1**
-To avoid this problem, you should check the STDOUT of pdb2gmx to ensure that the total system charge is what you expect it to be. You can alter the residue lists in expect_autoAssign.exp by either manually selecting an alternative, non-clashing residue, or use another randomly sampled set of residues from ChargeRoulette.py.
-
-**Solution 2**
-Renumber all chains consecutively and then remove all chain information. Linearizing the pdb in this way is much more efficient as residue numbers are not shared between different parts of the protein complex. Methods of doing this are not covered here.
-
-### topol_to_txt.sh
-
-The topol_to_txt.sh bash script can be used to check that your pdb2gmx out.pdb file is configured with the correct distribution of charges. To use this: 
+#### Example output:
 
 ```
-bash topol_to_txt.sh <0_topol_Protein_chain_D.itp>
+Running charge_roulette.py
+  - Will sample 5 charges from 2GRN.pdb-residue_depth.pdb 3 times.
+  - The following charges will be assigned: (sample_no,LYS,ARG,HIS):
+    1,{18 65 74 101 154},{},{}
+    2,{30 49 154},{149},{20}
+    3,{101 154},{104 147 149},{}
+
+  Charge set 1:
+  - Files in directory: /home/andy/Github/gasMD/examples/outputs/sample_1
+  - Total charge 5.000 e
+
+  Charge set 2:
+  - Files in directory: /home/andy/Github/gasMD/examples/outputs/sample_2
+  - Total charge 5.000 e
+
+  Charge set 3:
+  - Files in directory: /home/andy/Github/gasMD/examples/outputs/sample_3
+  - Total charge 5.000 e
 ```
 
-The topol_to_txt.sh script reads through each residue of the topology file and returns the residues which have a +1 charge - these being your lys, arg and his residues from the last script. 
+- The 'Total charge' above should be checked in each instance to make sure that the total molecule charge is correct. 
 
-If your charges are spread across multiple chains, you will need to run topol_to_txt.sh on each chain-specific topology file. To check that the correct charges have been distributed, open the basic_nQ_set.pdb file that you used from ChargeRoulette.py in PyMOL and paste the output of topol_to_txt.sh:
+### Other useful customisations:
 
+#### Changing the pdb2gmx run command
+By default the pdb2gmx run command is:
 ```
-select qRes=(i;14,48,121,146,176,186,263)
+gmx pdb2gmx -f ${input} -o ${jobdir}/out.pdb -p ${jobdir}/topol.top -i ${jobdir}/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
 ```
+The flags after -i can be customised by editing the `fflags` variable on line 23 of `run_charge_roulette.sh`. 
 
-the qRes selection should match the residues within your pdb file. 
 
-
-### Additional Information
-
-All testing was performed on GROMACS version 5.1.2 on a Mac running macOS Sierra Version 10.12.6
-
-For more information, please contact Andy at andy.lau@kcl.ac.uk
