@@ -4,6 +4,10 @@ These scripts can be used to automate the charge assigning step of GROMACS pdb2g
 
 Assigning charges using the pdb2gmx interactive tool (via -lys -arg -his etc. flags) is very tedious, as the user the prompted to key in a number, e.g. '0' for a non-protonated (-1) aspartic acid, or '1' to have it protonated (0), for every residue in the input file. Hence the motivation for this repo is to put together scripts that can automatically assign such protonation states without needing any input from the user. 
 
+<p align="center">
+  <img width="600" height="450" src="https://github.com/andymlau/gasMD/blob/master/examples/sample.gif">
+</p>
+
 A few assumptions are made in terms of how charges are initialised:
 1. Mass spec typically produces net positively charged ions, and so to produce such representations, all acidic residues are set to neutral (i.e. protonated) and a number of charges are spread randomly across only the basic residues (lys, arg and his). Termini are also left neutral. 
 2. Charge-carrying residues are selected randomly from a set of candidate residues that meet the selection criteria, defined as all lys, arg and his residues within 5Å depth of the surface of the molecule. 
