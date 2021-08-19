@@ -1,0 +1,400 @@
+spawn bash /home/andy/Github/gasMD/example/output/sample_3/run_pdb2gmx.sh
+                     :-) GROMACS - gmx pdb2gmx, 2021.3 (-:
+
+                            GROMACS is written by:
+     Andrey Alekseenko              Emile Apol              Rossen Apostolov     
+         Paul Bauer           Herman J.C. Berendsen           Par Bjelkmar       
+       Christian Blau           Viacheslav Bolnykh             Kevin Boyd        
+     Aldert van Buuren           Rudi van Drunen             Anton Feenstra      
+    Gilles Gouaillardet             Alan Gray               Gerrit Groenhof      
+       Anca Hamuraru            Vincent Hindriksen          M. Eric Irrgang      
+      Aleksei Iupinov           Christoph Junghans             Joe Jordan        
+    Dimitrios Karkoulis            Peter Kasson                Jiri Kraus        
+      Carsten Kutzner              Per Larsson              Justin A. Lemkul     
+       Viveca Lindahl            Magnus Lundborg             Erik Marklund       
+        Pascal Merz             Pieter Meulenhoff            Teemu Murtola       
+        Szilard Pall               Sander Pronk              Roland Schulz       
+       Michael Shirts            Alexey Shvetsov             Alfons Sijbers      
+       Peter Tieleman              Jon Vincent              Teemu Virolainen     
+     Christian Wennberg            Maarten Wolf              Artem Zhmurov       
+                           and the project leaders:
+        Mark Abraham, Berk Hess, Erik Lindahl, and David van der Spoel
+
+Copyright (c) 1991-2000, University of Groningen, The Netherlands.
+Copyright (c) 2001-2019, The GROMACS development team at
+Uppsala University, Stockholm University and
+the Royal Institute of Technology, Sweden.
+check out http://www.gromacs.org for more information.
+
+GROMACS is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License
+as published by the Free Software Foundation; either version 2.1
+of the License, or (at your option) any later version.
+
+GROMACS:      gmx pdb2gmx, version 2021.3
+Executable:   /usr/local/gromacs/bin/gmx
+Data prefix:  /usr/local/gromacs
+Working dir:  /home/andy/Github/gasMD
+Command line:
+  gmx pdb2gmx -f /home/andy/Github/gasMD/example/inputs/pdb2grnA..pdb-residue_depth.pdb -o /home/andy/Github/gasMD/example/output/sample_3/charge_set_3_out.pdb -v -heavyh -ff oplsaa -p /home/andy/Github/gasMD/example/output/sample_3/topol.top -i /home/andy/Github/gasMD/example/output/sample_3/posre.itp -water none -lys -arg -asp -glu -his -ter -renum -merge all
+
+Using the Oplsaa force field in directory oplsaa.ff
+
+going to rename oplsaa.ff/aminoacids.r2b
+Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.r2b
+Reading /home/andy/Github/gasMD/example/inputs/pdb2grnA..pdb-residue_depth.pdb...
+Read '', 1261 atoms
+Renaming atom 'CD1' in residue 4 ILE to 'CD'
+Renaming atom 'CD1' in residue 45 ILE to 'CD'
+Renaming atom 'CD1' in residue 96 ILE to 'CD'
+Renaming atom 'CD1' in residue 107 ILE to 'CD'
+Renaming atom 'CD1' in residue 109 ILE to 'CD'
+Renaming atom 'CD1' in residue 112 ILE to 'CD'
+Renaming atom 'CD1' in residue 116 ILE to 'CD'
+Renaming atom 'CD1' in residue 125 ILE to 'CD'
+Renaming atom 'CD1' in residue 136 ILE to 'CD'
+
+Analyzing pdb file
+Splitting chemical chains based on TER records or chain id changing.
+
+There are 1 chains and 0 blocks of water and 157 residues with 1261 atoms
+
+  chain  #res #atoms
+
+  1 'A'   157   1261  
+
+All occupancies are one
+All occupancies are one
+Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/atomtypes.atp
+
+Reading residue database... (Oplsaa)
+Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.rtp
+Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.hdb
+Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.n.tdb
+Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.c.tdb
+
+Processing chain 1 'A' (1261 atoms, 157 residues)
+Which LYSINE type do you want for residue 14
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:0
+Which LYSINE type do you want for residue 18
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:1
+Which LYSINE type do you want for residue 30
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:0
+Which LYSINE type do you want for residue 48
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:1
+Which LYSINE type do you want for residue 49
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:1
+Which LYSINE type do you want for residue 59
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:1
+Which LYSINE type do you want for residue 65
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:1
+Which LYSINE type do you want for residue 74
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:0
+Which LYSINE type do you want for residue 76
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:0
+Which LYSINE type do you want for residue 101
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:1
+Which LYSINE type do you want for residue 110
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:1
+Which LYSINE type do you want for residue 146
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:0
+Which LYSINE type do you want for residue 153
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:0
+Which LYSINE type do you want for residue 154
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Type a number:0
+Which ARGININE type do you want for residue 8
+0. Not protonated (charge 0) (ARGN)
+1. Protonated (charge +1) (ARG)
+
+Type a number:1
+Which ARGININE type do you want for residue 13
+0. Not protonated (charge 0) (ARGN)
+1. Protonated (charge +1) (ARG)
+
+Type a number:0
+Which ARGININE type do you want for residue 17
+0. Not protonated (charge 0) (ARGN)
+1. Protonated (charge +1) (ARG)
+
+Type a number:0
+Which ARGININE type do you want for residue 61
+0. Not protonated (charge 0) (ARGN)
+1. Protonated (charge +1) (ARG)
+
+Type a number:0
+Which ARGININE type do you want for residue 104
+0. Not protonated (charge 0) (ARGN)
+1. Protonated (charge +1) (ARG)
+
+Type a number:1
+Which ARGININE type do you want for residue 141
+0. Not protonated (charge 0) (ARGN)
+1. Protonated (charge +1) (ARG)
+
+Type a number:0
+Which ARGININE type do you want for residue 147
+0. Not protonated (charge 0) (ARGN)
+1. Protonated (charge +1) (ARG)
+
+Type a number:0
+Which ARGININE type do you want for residue 149
+0. Not protonated (charge 0) (ARGN)
+1. Protonated (charge +1) (ARG)
+
+Type a number:1
+Which ASPARTIC ACID type do you want for residue 19
+0. Not protonated (charge -1) (ASP)
+1. Protonated (charge 0) (ASPH)
+
+Type a number:1
+Which ASPARTIC ACID type do you want for residue 33
+0. Not protonated (charge -1) (ASP)
+1. Protonated (charge 0) (ASPH)
+
+Type a number:1
+Which ASPARTIC ACID type do you want for residue 66
+0. Not protonated (charge -1) (ASP)
+1. Protonated (charge 0) (ASPH)
+
+Type a number:1
+Which ASPARTIC ACID type do you want for residue 67
+0. Not protonated (charge -1) (ASP)
+1. Protonated (charge 0) (ASPH)
+
+Type a number:1
+Which ASPARTIC ACID type do you want for residue 100
+0. Not protonated (charge -1) (ASP)
+1. Protonated (charge 0) (ASPH)
+
+Type a number:1
+Which ASPARTIC ACID type do you want for residue 102
+0. Not protonated (charge -1) (ASP)
+1. Protonated (charge 0) (ASPH)
+
+Type a number:1
+Which ASPARTIC ACID type do you want for residue 127
+0. Not protonated (charge -1) (ASP)
+1. Protonated (charge 0) (ASPH)
+
+Type a number:1
+Which GLUTAMIC ACID type do you want for residue 12
+0. Not protonated (charge -1) (GLU)
+1. Protonated (charge 0) (GLUH)
+
+Type a number:1
+Which GLUTAMIC ACID type do you want for residue 42
+0. Not protonated (charge -1) (GLU)
+1. Protonated (charge 0) (GLUH)
+
+Type a number:1
+Which GLUTAMIC ACID type do you want for residue 54
+0. Not protonated (charge -1) (GLU)
+1. Protonated (charge 0) (GLUH)
+
+Type a number:1
+Which GLUTAMIC ACID type do you want for residue 78
+0. Not protonated (charge -1) (GLU)
+1. Protonated (charge 0) (GLUH)
+
+Type a number:1
+Which GLUTAMIC ACID type do you want for residue 98
+0. Not protonated (charge -1) (GLU)
+1. Protonated (charge 0) (GLUH)
+
+Type a number:1
+Which GLUTAMIC ACID type do you want for residue 99
+0. Not protonated (charge -1) (GLU)
+1. Protonated (charge 0) (GLUH)
+
+Type a number:1
+Which GLUTAMIC ACID type do you want for residue 118
+0. Not protonated (charge -1) (GLU)
+1. Protonated (charge 0) (GLUH)
+
+Type a number:1
+Which GLUTAMIC ACID type do you want for residue 122
+0. Not protonated (charge -1) (GLU)
+1. Protonated (charge 0) (GLUH)
+
+Type a number:1
+Which GLUTAMIC ACID type do you want for residue 132
+0. Not protonated (charge -1) (GLU)
+1. Protonated (charge 0) (GLUH)
+
+Type a number:1
+Which GLUTAMIC ACID type do you want for residue 143
+0. Not protonated (charge -1) (GLU)
+1. Protonated (charge 0) (GLUH)
+
+Type a number:1
+Which GLUTAMIC ACID type do you want for residue 145
+0. Not protonated (charge -1) (GLU)
+1. Protonated (charge 0) (GLUH)
+
+Type a number:1
+Which HISTIDINE type do you want for residue 20
+0. H on ND1 only (HISD)
+1. H on NE2 only (HISE)
+2. H on ND1 and NE2 (HISH)
+3. Coupled to Heme (HIS1)
+
+Type a number:0
+Which HISTIDINE type do you want for residue 83
+0. H on ND1 only (HISD)
+1. H on NE2 only (HISE)
+2. H on ND1 and NE2 (HISH)
+3. Coupled to Heme (HIS1)
+
+Type a number:0
+
+Identified residue MET1 as a starting terminus.
+
+Identified residue PRO157 as a ending terminus.
+8 out of 8 lines of specbond.dat converted successfully
+Special Atom Distance matrix:
+                    MET1  HISD20   MET36   MET39   CYS43   MET62   CYS75
+                     SD7  NE2164   SD280   SD304   SG342   SD487   SG592
+  HISD20  NE2164   3.248
+   MET36   SD280   2.058   1.450
+   MET39   SD304   1.246   2.090   1.107
+   CYS43   SG342   2.579   1.088   1.242   1.335
+   MET62   SD487   2.422   1.283   1.378   1.210   0.363
+   CYS75   SG592   2.496   1.676   1.775   1.365   0.728   0.452
+  HISD83  NE2664   3.841   2.262   2.969   2.737   1.729   1.651   1.377
+   CYS93   SG735   3.104   2.583   2.790   2.193   1.702   1.486   1.041
+  CYS138  SG1098   4.696   3.488   4.142   3.739   2.915   2.796   2.435
+                  HISD83   CYS93
+                  NE2664   SG735
+   CYS93   SG735   1.028
+  CYS138  SG1098   1.234   1.592
+
+Changing rtp entry of residue 14 LYSN to 'LYS'
+
+Changing rtp entry of residue 18 LYS to 'LYSH'
+
+Changing rtp entry of residue 30 LYSN to 'LYS'
+
+Changing rtp entry of residue 43 CYS to 'CYSH'
+
+Changing rtp entry of residue 48 LYS to 'LYSH'
+
+Changing rtp entry of residue 49 LYS to 'LYSH'
+
+Changing rtp entry of residue 59 LYS to 'LYSH'
+
+Changing rtp entry of residue 65 LYS to 'LYSH'
+
+Changing rtp entry of residue 74 LYSN to 'LYS'
+
+Changing rtp entry of residue 75 CYS to 'CYSH'
+
+Changing rtp entry of residue 76 LYSN to 'LYS'
+
+Changing rtp entry of residue 93 CYS to 'CYSH'
+
+Changing rtp entry of residue 101 LYS to 'LYSH'
+
+Changing rtp entry of residue 110 LYS to 'LYSH'
+
+Changing rtp entry of residue 138 CYS to 'CYSH'
+
+Changing rtp entry of residue 146 LYSN to 'LYS'
+
+Changing rtp entry of residue 153 LYSN to 'LYS'
+
+Changing rtp entry of residue 154 LYSN to 'LYS'
+Select start terminus type for MET-1
+ 0: NH3+
+ 1: ZWITTERION_NH3+ (only use with zwitterions containing exactly one residue)
+ 2: NH2
+ 3: None
+2
+Start terminus MET-1: NH2
+Select end terminus type for PRO-157
+ 0: PRO-COO-
+ 1: PRO-ZWITTERION_COO- (only use with zwitterions containing exactly one residue)
+ 2: COOH
+ 3: None
+2
+End terminus PRO-157: COOH
+
+Checking for duplicate atoms....
+
+Generating any missing hydrogen atoms and/or adding termini.
+
+Now there are 157 residues with 2533 atoms
+
+Making bonds...
+
+Number of bonds was 2570, now 2570
+
+Generating angles, dihedrals and pairs...
+Before cleaning: 6785 pairs
+Before cleaning: 6895 dihedrals
+Keeping all generated dihedrals
+
+Making cmap torsions...
+
+There are 6895 dihedrals,  494 impropers, 4653 angles
+          6737 pairs,     2570 bonds and     0 virtual sites
+
+Total mass 17929.894 a.m.u.
+
+Total charge 10.000 e
+
+Writing topology
+
+Writing coordinate file...
+
+		--------- PLEASE NOTE ------------
+
+You have successfully generated a topology from: /home/andy/Github/gasMD/example/inputs/pdb2grnA..pdb-residue_depth.pdb.
+
+The Oplsaa force field is used.
+
+		--------- ETON ESAELP ------------
+
+GROMACS reminds you: "It Costs Too Much If It Costs a Lot" (Magnapop)
+
