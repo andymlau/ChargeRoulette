@@ -94,8 +94,6 @@ Running charge_roulette.py
 
 #### Runtime
 
-ChargeRoulette has linear time complexity and takes roughly 2 seconds to sample 10 charges from a 157 residue long protein, i.e. n_sample=10 will take ~20 seconds. The quoted runtime includes the time taken to run pdb2gmx and the charge assignment process. 
-
 ChargeRoulette has linear time complexity and takes roughly 2 seconds to sample 10 charges from a 157 residue long protein (i.e., n_sample=1, n_charges=10), running on 1 core of a Xeon E5-1650 CPU. The quoted runtime includes both the sampling and running the charge assignment process in pdb2gmx. 
 
 ### Other useful customisations:
