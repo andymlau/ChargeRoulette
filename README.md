@@ -103,4 +103,4 @@ By default the pdb2gmx run command is:
 ```
 gmx pdb2gmx -f ${input} -o ${jobdir}/out.pdb -p ${jobdir}/topol.top -i ${jobdir}/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
 ```
-The flags after `-i` can be customised by editing the `fflags` variable on line 23 of `run_charge_roulette.sh`. 
+However this may not suit your particular application, depending on what you're simulating or how complex your system is. The flags after `-i` can be customised by editing the `fflags` variable on line 23 of `run_charge_roulette.sh`. 
