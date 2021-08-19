@@ -2,7 +2,7 @@
 
 These scripts can be used to automate the charge assigning step of GROMACS pdb2gmx for gas phase molecular dynamics simulations. Gas phase simulations of charged protein complexes are typically performed for comparisons with experimental structural mass spectrometry measurements.  
 
-Assigning charges using the pdb2gmx interactive tool (via -lys -arg -his etc. flags) is very tedious, as the user the prompted to key in a number, e.g. '0' for a non-protonated (-1) aspartic acid, or '1' to have it protonated (0), for every residue in the input file. Hence the motivation for this repo is to put together scripts that can automatically assign such protonation states without needing any input from the user. 
+Assigning charges using the pdb2gmx interactive tool (via `-lys` `-arg` `-his` etc. flags) is very tedious, as the user the prompted to key in a number, e.g. '0' for a non-protonated (-1) aspartic acid, or '1' to have it protonated (0), for every residue in the input file. Hence the motivation for this repo is to put together scripts that can automatically assign such protonation states without needing any input from the user. 
 
 <p align="center">
   <img width="600" height="450" src="https://github.com/andymlau/gasMD/blob/master/examples/sample.gif">
