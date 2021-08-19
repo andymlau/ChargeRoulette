@@ -26,8 +26,8 @@ The following files are distributed:
 - **examples** - Example input and output files. 
 
 #### Inputs:
-1. Given an input pdb file, such as `examples/2GRN.pdb`, the file must first be submitted to the DEPTH server found [here](http://cospi.iiserpune.ac.in/depth).
-2. A zip file containing outputs can be downloaded from the server once the job has been completed. The output file with the suffix `-residue_depth.pdb` should be used for ChargeRoulette.
+1. Given an input pdb file, such as `examples/input/2GRN.pdb`, the file must first be submitted to the DEPTH server found [here](http://cospi.iiserpune.ac.in/depth).
+2. A zip file containing outputs can be downloaded from the server once the job has been completed. The output file with the suffix `-residue_depth.pdb` should be used for ChargeRoulette. An example output file is supplied at `examples/input/2GRN.pdb-residue_depth.pdb`.
 
 3. The command for running charge roulette is:
 
@@ -96,5 +96,3 @@ By default the pdb2gmx run command is:
 gmx pdb2gmx -f ${input} -o ${jobdir}/out.pdb -p ${jobdir}/topol.top -i ${jobdir}/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
 ```
 The flags after -i can be customised by editing the `fflags` variable on line 23 of `run_charge_roulette.sh`. 
-
-
