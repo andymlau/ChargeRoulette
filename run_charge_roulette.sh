@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-# GasMD script from https://github.com/andymlau/gasMD
+# ChargeRoulette script from https://github.com/andymlau/gasMD
 # Written by Andy M Lau 2021
 
 set -eu
@@ -19,6 +19,8 @@ input=$(readlink -f $1)
 ncharges=$2
 nsamples=$3
 output=$(readlink -f $4)
+
+fflags="-v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all"
 
 # Some checks
 if test ! -f $input; then
@@ -72,7 +74,7 @@ while read -r line; do
   # Generate runscript
   runscript=$(readlink -f "${jobdir}/run_pdb2gmx.sh")
   echo "source /usr/local/gromacs/bin/GMXRC" > $runscript
-  echo "gmx pdb2gmx -f ${input} -o ${jobdir}/charge_set_${no}_out.pdb -v -heavyh -ff oplsaa -p ${jobdir}/topol.top -i ${jobdir}/posre.itp -water none -lys -arg -asp -glu -his -ter -renum -merge all" >> $runscript
+  echo "gmx pdb2gmx -f ${input} -o ${jobdir}/out.pdb -p ${jobdir}/topol.top -i ${jobdir}/posre.itp ${fflags}" >> $runscript
 
   # Generate expect script
   runexpect=$(readlink -f "${jobdir}/auto_assign.exp")

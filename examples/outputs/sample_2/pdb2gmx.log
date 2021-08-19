@@ -1,4 +1,4 @@
-spawn bash /home/andy/Github/gasMD/example/output/sample_2/run_pdb2gmx.sh
+spawn bash /home/andy/Github/gasMD/examples/outputs/sample_2/run_pdb2gmx.sh
                      :-) GROMACS - gmx pdb2gmx, 2021.3 (-:
 
                             GROMACS is written by:
@@ -36,13 +36,13 @@ Executable:   /usr/local/gromacs/bin/gmx
 Data prefix:  /usr/local/gromacs
 Working dir:  /home/andy/Github/gasMD
 Command line:
-  gmx pdb2gmx -f /home/andy/Github/gasMD/example/inputs/pdb2grnA..pdb-residue_depth.pdb -o /home/andy/Github/gasMD/example/output/sample_2/charge_set_2_out.pdb -v -heavyh -ff oplsaa -p /home/andy/Github/gasMD/example/output/sample_2/topol.top -i /home/andy/Github/gasMD/example/output/sample_2/posre.itp -water none -lys -arg -asp -glu -his -ter -renum -merge all
+  gmx pdb2gmx -f /home/andy/Github/gasMD/examples/inputs/2GRN.pdb-residue_depth.pdb -o /home/andy/Github/gasMD/examples/outputs/sample_2/out.pdb -p /home/andy/Github/gasMD/examples/outputs/sample_2/topol.top -i /home/andy/Github/gasMD/examples/outputs/sample_2/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
 
 Using the Oplsaa force field in directory oplsaa.ff
 
 going to rename oplsaa.ff/aminoacids.r2b
 Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.r2b
-Reading /home/andy/Github/gasMD/example/inputs/pdb2grnA..pdb-residue_depth.pdb...
+Reading /home/andy/Github/gasMD/examples/inputs/2GRN.pdb-residue_depth.pdb...
 Read '', 1261 atoms
 Renaming atom 'CD1' in residue 4 ILE to 'CD'
 Renaming atom 'CD1' in residue 45 ILE to 'CD'
@@ -73,22 +73,24 @@ Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoaci
 Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.n.tdb
 Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.c.tdb
 
+Back Off! I just backed up /home/andy/Github/gasMD/examples/outputs/sample_2/topol.top to /home/andy/Github/gasMD/examples/outputs/sample_2/#topol.top.1#
+
 Processing chain 1 'A' (1261 atoms, 157 residues)
 Which LYSINE type do you want for residue 14
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:1
+Type a number:0
 Which LYSINE type do you want for residue 18
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:1
+Type a number:0
 Which LYSINE type do you want for residue 30
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:0
+Type a number:1
 Which LYSINE type do you want for residue 48
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
@@ -103,7 +105,7 @@ Which LYSINE type do you want for residue 59
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:1
+Type a number:0
 Which LYSINE type do you want for residue 65
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
@@ -123,7 +125,7 @@ Which LYSINE type do you want for residue 101
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:1
+Type a number:0
 Which LYSINE type do you want for residue 110
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
@@ -148,7 +150,7 @@ Which ARGININE type do you want for residue 8
 0. Not protonated (charge 0) (ARGN)
 1. Protonated (charge +1) (ARG)
 
-Type a number:1
+Type a number:0
 Which ARGININE type do you want for residue 13
 0. Not protonated (charge 0) (ARGN)
 1. Protonated (charge +1) (ARG)
@@ -173,7 +175,7 @@ Which ARGININE type do you want for residue 141
 0. Not protonated (charge 0) (ARGN)
 1. Protonated (charge +1) (ARG)
 
-Type a number:1
+Type a number:0
 Which ARGININE type do you want for residue 147
 0. Not protonated (charge 0) (ARGN)
 1. Protonated (charge +1) (ARG)
@@ -310,11 +312,11 @@ Special Atom Distance matrix:
    CYS93   SG735   1.028
   CYS138  SG1098   1.234   1.592
 
-Changing rtp entry of residue 14 LYS to 'LYSH'
+Changing rtp entry of residue 14 LYSN to 'LYS'
 
-Changing rtp entry of residue 18 LYS to 'LYSH'
+Changing rtp entry of residue 18 LYSN to 'LYS'
 
-Changing rtp entry of residue 30 LYSN to 'LYS'
+Changing rtp entry of residue 30 LYS to 'LYSH'
 
 Changing rtp entry of residue 43 CYS to 'CYSH'
 
@@ -322,7 +324,7 @@ Changing rtp entry of residue 48 LYSN to 'LYS'
 
 Changing rtp entry of residue 49 LYS to 'LYSH'
 
-Changing rtp entry of residue 59 LYS to 'LYSH'
+Changing rtp entry of residue 59 LYSN to 'LYS'
 
 Changing rtp entry of residue 65 LYSN to 'LYS'
 
@@ -334,7 +336,7 @@ Changing rtp entry of residue 76 LYSN to 'LYS'
 
 Changing rtp entry of residue 93 CYS to 'CYSH'
 
-Changing rtp entry of residue 101 LYS to 'LYSH'
+Changing rtp entry of residue 101 LYSN to 'LYS'
 
 Changing rtp entry of residue 110 LYSN to 'LYS'
 
@@ -364,37 +366,39 @@ Checking for duplicate atoms....
 
 Generating any missing hydrogen atoms and/or adding termini.
 
-Now there are 157 residues with 2533 atoms
+Now there are 157 residues with 2528 atoms
 
 Making bonds...
 
-Number of bonds was 2570, now 2570
+Number of bonds was 2565, now 2565
 
 Generating angles, dihedrals and pairs...
-Before cleaning: 6786 pairs
-Before cleaning: 6896 dihedrals
+Before cleaning: 6773 pairs
+Before cleaning: 6883 dihedrals
 Keeping all generated dihedrals
 
 Making cmap torsions...
 
-There are 6896 dihedrals,  495 impropers, 4652 angles
-          6738 pairs,     2570 bonds and     0 virtual sites
+There are 6883 dihedrals,  493 impropers, 4639 angles
+          6725 pairs,     2565 bonds and     0 virtual sites
 
-Total mass 17929.894 a.m.u.
+Total mass 17924.854 a.m.u.
 
-Total charge 10.000 e
+Total charge 5.000 e
 
 Writing topology
+
+Back Off! I just backed up /home/andy/Github/gasMD/examples/outputs/sample_2/posre.itp to /home/andy/Github/gasMD/examples/outputs/sample_2/#posre.itp.1#
 
 Writing coordinate file...
 
 		--------- PLEASE NOTE ------------
 
-You have successfully generated a topology from: /home/andy/Github/gasMD/example/inputs/pdb2grnA..pdb-residue_depth.pdb.
+You have successfully generated a topology from: /home/andy/Github/gasMD/examples/inputs/2GRN.pdb-residue_depth.pdb.
 
 The Oplsaa force field is used.
 
 		--------- ETON ESAELP ------------
 
-GROMACS reminds you: "I Had So Many Problem, and Then I Got Me a Walkman" (F. Black)
+GROMACS reminds you: "The Poodle Chews It" (F. Zappa)
 

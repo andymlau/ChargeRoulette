@@ -1,4 +1,4 @@
-# GasMD script from https://github.com/andymlau/gasMD
+# ChargeRoulette script from https://github.com/andymlau/gasMD
 # Written by Andy M Lau 2021
 
 import os

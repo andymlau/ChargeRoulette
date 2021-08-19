@@ -1,6 +1,6 @@
 #! /usr/bin/expect
 
-# GasMD script from https://github.com/andymlau/gasMD
+# ChargeRoulette script from https://github.com/andymlau/gasMD
 # Written by Andy M Lau 2021
 
 set timeout -1
@@ -12,11 +12,11 @@ set glu_q {Which GLUTAMIC ACID type do you want for residue (\d+)}
 set his_q {Which HISTIDINE type do you want for residue (\d+)}
 set ter_q {terminus type}
 
-set lysine {18 74 101 110 154}
-set arginine {8 17 104 141}
+set lysine {30 49 154}
+set arginine {149}
 set histidine {20}
 
-spawn bash /home/andy/Github/gasMD/example/output/sample_1/run_pdb2gmx.sh
+spawn bash /home/andy/Github/gasMD/examples/outputs/sample_2/run_pdb2gmx.sh
 
 expect  {
 
