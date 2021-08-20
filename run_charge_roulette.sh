@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
-# ChargeRoulette script from https://github.com/andymlau/gasMD
-# Written by Andy M Lau 2021
+# ChargeRoulette script from https://github.com/andymlau/ChargeRoulette
+# Written by Andy M Lau, PhD (2021)
 
 set -eu
 
