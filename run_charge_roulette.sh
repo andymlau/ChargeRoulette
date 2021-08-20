@@ -87,6 +87,11 @@ while read -r line; do
 
     echo -e "\n  Charge set ${no}: "
     echo "  - Files in directory: ${jobdir}"
+    echo "  - Charges assigned to residues: "
+    echo "    Lysines: $(echo ${lys} | sed 's/{//g; s/}//g; s/ /, /g')"
+    echo "    Arginines: $(echo ${arg} | sed 's/{//g; s/}//g; s/ /, /g')"
+    echo "    Histidines: $(echo ${his} | sed 's/{//g; s/}//g; s/ /, /g')"
+    echo "    "
     echo "  - $(grep 'Total charge' $log)"
   fi
 
