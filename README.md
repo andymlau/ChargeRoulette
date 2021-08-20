@@ -73,23 +73,38 @@ Within `sample_x` subfolders:
 
 ```
 Running charge_roulette.py
-  - Will sample 5 charges from 2GRN.pdb-residue_depth.pdb 3 times.
+  - Will sample 10 charges from 2GRN.pdb-residue_depth.pdb 3 times.
   - The following charges will be assigned: (sample_no,LYS,ARG,HIS):
-    1,{18 65 74 101 154},{},{}
-    2,{30 49 154},{149},{20}
-    3,{101 154},{104 147 149},{}
+    1,{18 48 49 65 74 146 153 154},{17 141},{}
+    2,{18 30 48 59 101 110 146 154},{104},{20}
+    3,{18 30 101 146 153},{8 141 147 149},{20}
 
   Charge set 1:
-  - Files in directory: /home/andy/Github/gasMD/examples/outputs/sample_1
-  - Total charge 5.000 e
+  - Files in directory: /home/andy/Github/gasMD/examples/test/sample_1
+  - Charges assigned to residues:
+    Lysines: 18, 48, 49, 65, 74, 146, 153, 154
+    Arginines: 17, 141
+    Histidines:
+
+  - Total charge 10.000 e
 
   Charge set 2:
-  - Files in directory: /home/andy/Github/gasMD/examples/outputs/sample_2
-  - Total charge 5.000 e
+  - Files in directory: /home/andy/Github/gasMD/examples/test/sample_2
+  - Charges assigned to residues:
+    Lysines: 18, 30, 48, 59, 101, 110, 146, 154
+    Arginines: 104
+    Histidines: 20
+
+  - Total charge 10.000 e
 
   Charge set 3:
-  - Files in directory: /home/andy/Github/gasMD/examples/outputs/sample_3
-  - Total charge 5.000 e
+  - Files in directory: /home/andy/Github/gasMD/examples/test/sample_3
+  - Charges assigned to residues:
+    Lysines: 18, 30, 101, 146, 153
+    Arginines: 8, 141, 147, 149
+    Histidines: 20
+
+  - Total charge 10.000 e
 ```
 
 - The 'Total charge' above should be checked in each instance to make sure that the total molecule charge is correct. 
