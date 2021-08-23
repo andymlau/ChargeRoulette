@@ -20,7 +20,16 @@ ncharges=$2
 nsamples=$3
 output=$(readlink -f $4)
 
+# source /usr/local/gromacs/bin/GMXRC
+gromacs="gmx pdb2gmx"
 fflags="-v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all"
+
+# Check that gromacs command is found
+if ! command -v $gromacs &> /dev/null
+then
+    echo "GROMACS (gmx pdb2gmx) was not found. Did you forget to source GMXRC?"
+    exit 0
+fi
 
 # Some checks
 if test ! -f $input; then
@@ -73,11 +82,13 @@ while read -r line; do
 
   # Generate runscript
   runscript=$(readlink -f "${jobdir}/run_pdb2gmx.sh")
+
   echo "source /usr/local/gromacs/bin/GMXRC" > $runscript
-  echo "gmx pdb2gmx -f ${input} -o ${jobdir}/out.pdb -p ${jobdir}/topol.top -i ${jobdir}/posre.itp ${fflags}" >> $runscript
+  echo "${gromacs} -f ${input} -o ${jobdir}/out.pdb -p ${jobdir}/topol.top -i ${jobdir}/posre.itp ${fflags}" >> $runscript
 
   # Generate expect script
   runexpect=$(readlink -f "${jobdir}/auto_assign.exp")
+
   sed -e "s/__LYS__/$lys/g;s/__ARG__/$arg/g;s/__HIS__/$his/g;s:__RUNSCRIPT__:$runscript:g" $autoassign > $runexpect
 
   # Check both runfiles exist, then run expect
@@ -87,12 +98,21 @@ while read -r line; do
 
     echo -e "\n  Charge set ${no}: "
     echo "  - Files in directory: ${jobdir}"
-    echo "  - Charges assigned to residues: "
-    echo "    Lysines: $(echo ${lys} | sed 's/{//g; s/}//g; s/ /, /g')"
-    echo "    Arginines: $(echo ${arg} | sed 's/{//g; s/}//g; s/ /, /g')"
-    echo "    Histidines: $(echo ${his} | sed 's/{//g; s/}//g; s/ /, /g')"
-    echo "    "
-    echo "  - $(grep 'Total charge' $log)"
+
+    # Check for fatal errors:
+    if grep -q "Fatal error" $log; then
+      sed -ne '/Fatal error/,$ p' $log | sed "s/^/    /g"
+      echo -e "\n"
+      exit 0
+    else
+      if grep -q "Total charge" $log; then
+        echo "  - Charges assigned to residues: "
+        echo "    Lysines: $(echo ${lys} | sed 's/{//g; s/}//g; s/ /, /g')"
+        echo "    Arginines: $(echo ${arg} | sed 's/{//g; s/}//g; s/ /, /g')"
+        echo "    Histidines: $(echo ${his} | sed 's/{//g; s/}//g; s/ /, /g')"
+        echo -e "\n  - $(grep 'Total charge' $log)"
+      fi
+    fi
   fi
 
 done < $charges
