@@ -4,10 +4,23 @@ These scripts can be used to automate the charge assigning step of GROMACS pdb2g
 
 Assigning charges using the GROMACS pdb2gmx interactive tool (via `-lys` `-arg` `-his` etc. flags) is very tedious, as the user the prompted to key in a number, e.g. '0' for a non-protonated (z=-1) aspartic acid, or '1' to have it protonated (z=0), for every residue in the input file. Hence the motivation for this repo is to put together scripts that can automatically assign such protonation states without needing any input from the user. 
 
+## Contents
+[Please read before trying to run]
+[Prerequisites]
+[Instructions for use]
+  [Inputs]
+  [Outputs]
+    [Example output]
+[Runtime]
+[Other useful customisations]
+  [Changing the pdb2gmx run command]
+  [gmx or not to gmx]
+
 <p align="center">
   <img width="600" height="450" src="https://github.com/andymlau/gasMD/blob/master/examples/sample.gif">
 </p>
 
+### Please read before trying to run
 A few assumptions are made in terms of how charges are initialised:
 1. Mass spec typically produces net positively charged ions, and so to produce such representations, all acidic residues are set to neutral (i.e. protonated) and a number of charges are spread randomly across only the basic residues (lys, arg and his). Termini are also left neutral. 
 2. Charge-carrying residues are selected randomly from a set of candidate residues that meet the selection criteria, defined as all lys, arg and his residues within 5Å depth of the surface of the molecule. 
@@ -109,6 +122,22 @@ Running charge_roulette.py
 
 - The 'Total charge' above should be checked in each instance to make sure that the total molecule charge is correct. 
 
+If pdb2gmx encounters a fatal error, the error will be printed and the program will stop:
+```
+  Charge set 1:
+  - Files in directory: /home/andy/Github/ChargeRoulette/examples/test2/sample_1
+    Fatal error:
+    Residue 129 named LEU of a molecule in the input file was mapped
+    to an entry in the topology database, but the atom C used in
+    that entry is not found in the input file. Perhaps your atom
+    and/or residue naming needs to be fixed.
+
+    For more information and tips for troubleshooting, please check the GROMACS
+    website at http://www.gromacs.org/Documentation/Errors
+    -------------------------------------------------------
+```
+As these are input specific issues, consult the error message and the GROMACS documentation to fix these. 
+
 #### Runtime
 
 ChargeRoulette has linear time complexity and takes roughly 2 seconds to sample 10 charges from a 157 residue long protein (i.e., `n_samples=1`, `n_charges=10`), running on 1 core of a Xeon E5-1650 CPU. Each additional sample takes another ~2 seconds, that is, `n_samples=10` will take ~2x10=~20 seconds for the same protein and `n_charges`. The quoted runtime includes both the sampling and running the charge assignment process in pdb2gmx. 
@@ -120,4 +149,45 @@ By default the pdb2gmx run command is:
 ```
 gmx pdb2gmx -f ${input} -o ${jobdir}/out.pdb -p ${jobdir}/topol.top -i ${jobdir}/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
 ```
-However this may not suit your particular application, depending on what you're simulating or how complex your system is. The flags after `-i` can be customised by editing the `fflags` variable on line 23 of `run_charge_roulette.sh`. 
+However this may not suit your particular application, depending on what you're simulating or how complex your system is. The flags after `-i` can be customised by editing the `fflags` variable in `run_charge_roulette.sh`. 
+
+#### gmx or not to gmx?
+This has not been tested yet, but if for some reason you are running an older version of GROMACS which does not preceed `pdb2gmx` with `gmx`, you will need to change the `gromacs` variable on line 24 of `run_charge_roulette.sh` and possibly line 86 if you don't need to source GROMACS first. As far as I know, the key mappings for the interactive charge assignment step of pdb2gmx is unchanged from GROMACS version 4 onwards), but it's worth checking that your total charge is correct after assignment and investigate further if not.
+
+Mappings for version 2021.3:
+```
+Which LYSINE type do you want for residue 1
+0. Not protonated (charge 0) (LYS)
+1. Protonated (charge +1) (LYSH)
+
+Which ARGININE type do you want for residue 14
+0. Not protonated (charge 0) (ARGN)
+1. Protonated (charge +1) (ARG)
+
+Which ASPARTIC ACID type do you want for residue 87
+0. Not protonated (charge -1) (ASP)
+1. Protonated (charge 0) (ASPH)
+
+Which GLUTAMIC ACID type do you want for residue 7
+0. Not protonated (charge -1) (GLU)
+1. Protonated (charge 0) (GLUH)
+
+Which HISTIDINE type do you want for residue 15
+0. H on ND1 only (HISD)
+1. H on NE2 only (HISE)
+2. H on ND1 and NE2 (HISH)
+3. Coupled to Heme (HIS1)
+
+Select start terminus type for LYSN-1
+ 0: NH3+
+ 1: ZWITTERION_NH3+ (only use with zwitterions containing exactly one residue)
+ 2: NH2
+ 3: None
+
+Start terminus LYSN-1: NH2
+Select end terminus type for LEU-129
+ 0: COO-
+ 1: ZWITTERION_COO- (only use with zwitterions containing exactly one residue)
+ 2: COOH
+ 3: None
+```
