@@ -43,10 +43,12 @@ The following files are distributed:
 - `examples` - Example input and output files.
 
 #### Inputs:
-1. Given an input pdb file, such as `examples/input/2GRN.pdb`, the file must first be submitted to the DEPTH server found [here](http://cospi.iiserpune.ac.in/depth).
-2. A zip file containing outputs can be downloaded from the server once the job has been completed. The output file with the suffix `-residue_depth.pdb` should be used for ChargeRoulette. An example output file is supplied at `examples/input/2GRN.pdb-residue_depth.pdb`. Residue depths (Å) replace the b-factor column in this file. The depth is used to select surface residues that can be charge-carrying.
 
-3. The command for running charge roulette is:
+1. First, source GROMACS using `source /usr/local/gromacs/bin/GMXRC` or the equivalent command for your system.
+2. Given an input pdb file, such as `examples/input/2GRN.pdb`, the file must first be submitted to the DEPTH server found [here](http://cospi.iiserpune.ac.in/depth).
+3. A zip file containing outputs can be downloaded from the server once the job has been completed. The output file with the suffix `-residue_depth.pdb` should be used for ChargeRoulette. An example output file is supplied at `examples/input/2GRN.pdb-residue_depth.pdb`. Residue depths (Å) replace the b-factor column in this file. The depth is used to select surface residues that can be charge-carrying.
+
+4. The command for running charge roulette is:
 
 ```
 bash run_charge_roulette.sh input.pdb n_charges n_samples output_directory
@@ -71,7 +73,7 @@ Found existing output directory at /home/andy/Github/ChargeRoulette/examples/tes
 When prompted, enter `y` to overwrite the files, or `n` to quit the program.
 
 #### Outputs:
-4. A number of output files are written to the user-defined output folder:
+5. A number of output files are written to the user-defined output folder:
 
 - `2GRN.pdb-residue_depth_samples.pdb` - a multi-state pdb file where each state contains the charge-carrying residues. This file is for visualisation only. It can be quite useful to open together this file and the original input pdb, in PyMOL to visualise where the charges have been assigned to. This strategy can be used iteratively to test different distributions of charges and test how they affect the simulation, for example.
 - `2GRN.pdb-residue_depth_samples.txt` - a summary of the residues that were selected in each sample. `1,{14 18 30 49 59 74 101 146},{141},{20}` is in the format: `sample_no,{LYS residue numbers},{ARG residue numbers},{HIS residue numbers}'.
