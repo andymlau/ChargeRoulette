@@ -27,7 +27,14 @@ fflags="-v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -
 # Check that gromacs command is found
 if ! command -v $gromacs &> /dev/null
 then
-    echo "GROMACS (gmx pdb2gmx) was not found. Did you forget to source GMXRC?"
+    echo "GROMACS (gmx pdb2gmx) was not found. Did you forget to install or source GMXRC?"
+    exit 0
+fi
+
+# Check that expect is found
+if ! command -v expect &> /dev/null
+then
+    echo "expect was not found. Did you forget to install?"
     exit 0
 fi
 
@@ -46,8 +53,15 @@ if test ! -d $output; then
   mkdir -p $output
   echo "Output files will be saved to ${output}"
 else
-  echo "Found output files at ${output}. Stopping."
-  # exit 0
+  while true; do
+    read -p "Found existing output directory at ${output}. Do you want to overwrite? [y/n] " yn
+    case $yn in
+        [Yy]* ) break;;
+        [Nn]* ) echo "Exiting."; exit;;
+        * ) echo "Please answer y or n.";;
+    esac
+done
+
 fi
 
 # Run charge roulette
@@ -111,8 +125,13 @@ while read -r line; do
         echo "    Arginines: $(echo ${arg} | sed 's/{//g; s/}//g; s/ /, /g')"
         echo "    Histidines: $(echo ${his} | sed 's/{//g; s/}//g; s/ /, /g')"
         echo -e "\n  - $(grep 'Total charge' $log)"
+      else
+        echo -e "\n  - pdb2gmx did not terminate correctly ('Total charge' not found). Please check output log of pdb2gmx for errors."
+        exit 0
       fi
     fi
   fi
 
 done < $charges
+
+echo -e "\nDone."
