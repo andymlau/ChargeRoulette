@@ -24,7 +24,8 @@ Assigning charges using the GROMACS pdb2gmx interactive tool (via `-lys` `-arg` 
 A few assumptions are made in terms of how charges are initialised:
 1. Mass spec typically produces net positively charged ions, and so to produce such representations, all acidic residues are set to neutral (i.e. protonated) and a number of charges are spread randomly across only the basic residues (lys, arg and his). Termini are also left neutral.
 2. Charge-carrying residues are selected randomly from a set of candidate residues that meet the selection criteria, defined as all lys, arg and his residues within 5Å depth of the surface of the molecule.
-3. ChargeRoulette does not clean your file for you - it is assumed that your pdb file is set up properly, i.e. chain and residue ids are correct and that any chain breaks in the molecule are intended or at least acknowledged. For general pdb file manipulation, [pdb-tools](http://www.bonvinlab.org/pdb-tools/) from the Bonvin Lab is recommended.
+3. ChargeRoulette does NOT run the whole gas phase simulation - it only performs the initial charge assignment step. For a detailed description on how to perform such simulations, Lars Konermann has a nice methods article [here](https://www.sciencedirect.com/science/article/abs/pii/S1046202317304644?via%3Dihub).  
+4. ChargeRoulette does not clean your file for you - it is assumed that your pdb file is set up properly, i.e. chain and residue ids are correct and that any chain breaks in the molecule are intended or at least acknowledged. For general pdb file manipulation, [pdb-tools](http://www.bonvinlab.org/pdb-tools/) from the Bonvin Lab is recommended.
 
 ### Prerequisites:
 
