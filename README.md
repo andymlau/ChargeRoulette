@@ -4,21 +4,21 @@ These scripts can be used to automate the charge assigning step of GROMACS pdb2g
 
 Assigning charges using the GROMACS pdb2gmx interactive tool (via `-lys` `-arg` `-his` etc. flags) is very tedious, as the user the prompted to key in a number, e.g. '0' for a non-protonated (z=-1) aspartic acid, or '1' to have it protonated (z=0), for every residue in the input file. Hence the motivation for this repo is to put together scripts that can automatically assign such protonation states without needing any input from the user. 
 
-## Contents
-[Please read before trying to run](#please-read-before-trying-to-run)
-[Prerequisites](#Prerequisites)
-[Instructions for use](#Instructions-for-use)
-  [Inputs](#Inputs)
-  [Outputs](#Outputs)
-    [Example output](#Example-output)
-[Runtime](#Runtime)
-[Other useful customisations](#Other-useful-customisations)
-  [Changing the pdb2gmx run command](#Changing-the-pdb2gmx-run-command)
-  [To gmx or not to gmx](#To-gmx-or-not-to-gmx?)
-
 <p align="center">
   <img width="600" height="450" src="https://github.com/andymlau/gasMD/blob/master/examples/sample.gif">
 </p>
+
+## Contents
+- [Please read before trying to run](#please-read-before-trying-to-run)
+- [Prerequisites](#prerequisites)
+- [Instructions for use](#instructions-for-use)
+  - [Inputs](#inputs)
+  - [Outputs](#outputs)
+    - [Example output](#example-output)
+- [Runtime](#runtime)
+- [Other useful customisations](#other-useful-customisations)
+  - [Changing the pdb2gmx run command](#changing-the-pdb2gmx-run-command)
+  - [To gmx or not to gmx?](#to-gmx-or-not-to-gmx)
 
 ### Please read before trying to run
 A few assumptions are made in terms of how charges are initialised:
