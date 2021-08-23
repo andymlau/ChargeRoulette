@@ -5,16 +5,16 @@ These scripts can be used to automate the charge assigning step of GROMACS pdb2g
 Assigning charges using the GROMACS pdb2gmx interactive tool (via `-lys` `-arg` `-his` etc. flags) is very tedious, as the user the prompted to key in a number, e.g. '0' for a non-protonated (z=-1) aspartic acid, or '1' to have it protonated (z=0), for every residue in the input file. Hence the motivation for this repo is to put together scripts that can automatically assign such protonation states without needing any input from the user. 
 
 ## Contents
-[Please read before trying to run]
-[Prerequisites]
-[Instructions for use]
-  [Inputs]
-  [Outputs]
-    [Example output]
-[Runtime]
-[Other useful customisations]
-  [Changing the pdb2gmx run command]
-  [gmx or not to gmx]
+[Please read before trying to run](#please-read-before-trying-to-run)
+[Prerequisites](#Prerequisites)
+[Instructions for use](#Instructions-for-use)
+  [Inputs](#Inputs)
+  [Outputs](#Outputs)
+    [Example output](#Example-output)
+[Runtime](#Runtime)
+[Other useful customisations](#Other-useful-customisations)
+  [Changing the pdb2gmx run command](#Changing-the-pdb2gmx-run-command)
+  [To gmx or not to gmx](#To-gmx-or-not-to-gmx?)
 
 <p align="center">
   <img width="600" height="450" src="https://github.com/andymlau/gasMD/blob/master/examples/sample.gif">
@@ -151,7 +151,7 @@ gmx pdb2gmx -f ${input} -o ${jobdir}/out.pdb -p ${jobdir}/topol.top -i ${jobdir}
 ```
 However this may not suit your particular application, depending on what you're simulating or how complex your system is. The flags after `-i` can be customised by editing the `fflags` variable in `run_charge_roulette.sh`. 
 
-#### gmx or not to gmx?
+#### To gmx or not to gmx?
 This has not been tested yet, but if for some reason you are running an older version of GROMACS which does not preceed `pdb2gmx` with `gmx`, you will need to change the `gromacs` variable on line 24 of `run_charge_roulette.sh` and possibly line 86 if you don't need to source GROMACS first. As far as I know, the key mappings for the interactive charge assignment step of pdb2gmx is unchanged from GROMACS version 4 onwards), but it's worth checking that your total charge is correct after assignment and investigate further if not.
 
 Mappings for version 2021.3:
