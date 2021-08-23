@@ -29,7 +29,7 @@ A few assumptions are made in terms of how charges are initialised:
 ### Prerequisites:
 
 - [GROMACS](https://manual.gromacs.org/documentation/) (tested on version 2021.3 released August 18th, 2021)
-- The 'expect' program for linux: https://linux.die.net/man/1/expect
+- The `expect` program for linux: https://linux.die.net/man/1/expect
 - At least Python 3.
 
 ### Instructions for use:
