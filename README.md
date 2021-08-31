@@ -8,7 +8,7 @@ The intended use case is that ChargeRoulette can be used to generate many instan
 
 This method has been applied to work such as that published in **Hansen & Lau et al., 2018, Angewandte Chemie**, [link](https://onlinelibrary.wiley.com/doi/10.1002/anie.201812018).
 
-Of interest, is a method published by **Konermann, 2017**, that implements mobile protons in gas-phase simulations, [link](https://pubs.acs.org/doi/pdf/10.1021/acs.jpcb.7b05703).
+Of interest, is a method published by **Konermann, 2017**, that implements a mobile proton method that allow charges to move between residues periodically, [link](https://pubs.acs.org/doi/pdf/10.1021/acs.jpcb.7b05703).
 
 ##
 
