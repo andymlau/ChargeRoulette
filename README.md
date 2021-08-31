@@ -4,7 +4,7 @@ These scripts can be used to automate the charge assigning step of GROMACS pdb2g
 
 Assigning charges using the GROMACS pdb2gmx interactive tool (via `-lys` `-arg` `-his` etc. flags) is very tedious, as the user the prompted to key in a number, e.g. '0' for a non-protonated (z=-1) aspartic acid, or '1' to have it protonated (z=0), for every residue in the input file. Hence the motivation for this repo is to put together scripts that can automatically assign such protonation states without needing any input from the user. ChargeRoulette can assign charges through GROMACS very quickly by using the `expect` program which automates interactions with the command line. This bypasses the need for the user to interactively enter 0s and 1s to assign the protonation state of each residue. 
 
-The intended use case is that ChargeRoulette can be used to generate many instances of a biological system with a total charge relevant to mass spectrometry, and each with a differing distribution of charged residues. Each instance can then be input to the rest of the GROMACS simulation workflow (equilibration, production, etc.).
+The intended use case is that ChargeRoulette can be used to generate many instances of a biological system with a total charge relevant to mass spectrometry, and each with a random distribution of charged residues (although a user-defined distribution can also be used). Each instance can then be input to the rest of the GROMACS simulation workflow (equilibration, production, etc.). This repo **does not** contain files for running the simulations. 
 
 This method has been applied to work such as that published in **Hansen & Lau et al., 2018, Angewandte Chemie**, [link](https://onlinelibrary.wiley.com/doi/10.1002/anie.201812018).
 
