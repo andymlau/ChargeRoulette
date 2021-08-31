@@ -1,8 +1,8 @@
 ;
-;	File '/home/andy/Github/ChargeRoulette/examples/outputs/sample_2/topol.top' was generated
+;	File '/home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_2/topol.top' was generated
 ;	By user: andy (1000)
 ;	On host: psipred-desktop.cs.ucl.ac.uk
-;	At date: Tue Aug 31 19:31:41 2021
+;	At date: Tue Aug 31 21:22:00 2021
 ;
 ;	This is a standalone topology file
 ;
@@ -13,7 +13,7 @@
 ;	Data prefix:  /usr/local/gromacs
 ;	Working dir:  /home/andy/Github/ChargeRoulette
 ;	Command line:
-;	  gmx pdb2gmx -f /home/andy/Github/ChargeRoulette/examples/inputs/2GRN.pdb-residue_depth.pdb -o /home/andy/Github/ChargeRoulette/examples/outputs/sample_2/out.pdb -p /home/andy/Github/ChargeRoulette/examples/outputs/sample_2/topol.top -i /home/andy/Github/ChargeRoulette/examples/outputs/sample_2/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
+;	  gmx pdb2gmx -f /home/andy/Github/ChargeRoulette/examples/inputs/2GRN.pdb-residue_depth.pdb -o /home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_2/out.pdb -p /home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_2/topol.top -i /home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_2/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
 ;	Force field was read from the standard GROMACS share directory.
 ;
 
@@ -24034,7 +24034,7 @@ Protein_chain_A     3
 
 ; Include Position restraint file
 #ifdef POSRES
-#include "/home/andy/Github/ChargeRoulette/examples/outputs/sample_2/posre.itp"
+#include "/home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_2/posre.itp"
 #endif
 
 [ system ]

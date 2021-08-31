@@ -12,11 +12,11 @@ set glu_q {Which GLUTAMIC ACID type do you want for residue (\d+)}
 set his_q {Which HISTIDINE type do you want for residue (\d+)}
 set ter_q {terminus type}
 
-set lysine {48 65 153}
+set lysine {14 18 153 154}
 set arginine {17}
-set histidine {20}
+set histidine {}
 
-spawn bash /home/andy/Github/ChargeRoulette/examples/outputs/sample_1/run_pdb2gmx.sh
+spawn bash /home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_3/run_pdb2gmx.sh
 
 expect  {
 

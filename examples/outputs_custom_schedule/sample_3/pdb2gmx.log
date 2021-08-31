@@ -1,4 +1,4 @@
-spawn bash /home/andy/Github/ChargeRoulette/examples/outputs/sample_2/run_pdb2gmx.sh
+spawn bash /home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_3/run_pdb2gmx.sh
                      :-) GROMACS - gmx pdb2gmx, 2021.3 (-:
 
                             GROMACS is written by:
@@ -36,7 +36,7 @@ Executable:   /usr/local/gromacs/bin/gmx
 Data prefix:  /usr/local/gromacs
 Working dir:  /home/andy/Github/ChargeRoulette
 Command line:
-  gmx pdb2gmx -f /home/andy/Github/ChargeRoulette/examples/inputs/2GRN.pdb-residue_depth.pdb -o /home/andy/Github/ChargeRoulette/examples/outputs/sample_2/out.pdb -p /home/andy/Github/ChargeRoulette/examples/outputs/sample_2/topol.top -i /home/andy/Github/ChargeRoulette/examples/outputs/sample_2/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
+  gmx pdb2gmx -f /home/andy/Github/ChargeRoulette/examples/inputs/2GRN.pdb-residue_depth.pdb -o /home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_3/out.pdb -p /home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_3/topol.top -i /home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_3/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
 
 Using the Oplsaa force field in directory oplsaa.ff
 
@@ -78,12 +78,12 @@ Which LYSINE type do you want for residue 14
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:0
+Type a number:1
 Which LYSINE type do you want for residue 18
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:0
+Type a number:1
 Which LYSINE type do you want for residue 30
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
@@ -93,7 +93,7 @@ Which LYSINE type do you want for residue 48
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:1
+Type a number:0
 Which LYSINE type do you want for residue 49
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
@@ -108,7 +108,7 @@ Which LYSINE type do you want for residue 65
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:1
+Type a number:0
 Which LYSINE type do you want for residue 74
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
@@ -128,22 +128,22 @@ Which LYSINE type do you want for residue 110
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:1
+Type a number:0
 Which LYSINE type do you want for residue 146
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:1
+Type a number:0
 Which LYSINE type do you want for residue 153
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:0
+Type a number:1
 Which LYSINE type do you want for residue 154
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:0
+Type a number:1
 Which ARGININE type do you want for residue 8
 0. Not protonated (charge 0) (ARGN)
 1. Protonated (charge +1) (ARG)
@@ -158,7 +158,7 @@ Which ARGININE type do you want for residue 17
 0. Not protonated (charge 0) (ARGN)
 1. Protonated (charge +1) (ARG)
 
-Type a number:0
+Type a number:1
 Which ARGININE type do you want for residue 61
 0. Not protonated (charge 0) (ARGN)
 1. Protonated (charge +1) (ARG)
@@ -173,7 +173,7 @@ Which ARGININE type do you want for residue 141
 0. Not protonated (charge 0) (ARGN)
 1. Protonated (charge +1) (ARG)
 
-Type a number:1
+Type a number:0
 Which ARGININE type do you want for residue 147
 0. Not protonated (charge 0) (ARGN)
 1. Protonated (charge +1) (ARG)
@@ -310,21 +310,21 @@ Special Atom Distance matrix:
    CYS93   SG735   1.028
   CYS138  SG1098   1.234   1.592
 
-Changing rtp entry of residue 14 LYSN to 'LYS'
+Changing rtp entry of residue 14 LYS to 'LYSH'
 
-Changing rtp entry of residue 18 LYSN to 'LYS'
+Changing rtp entry of residue 18 LYS to 'LYSH'
 
 Changing rtp entry of residue 30 LYSN to 'LYS'
 
 Changing rtp entry of residue 43 CYS to 'CYSH'
 
-Changing rtp entry of residue 48 LYS to 'LYSH'
+Changing rtp entry of residue 48 LYSN to 'LYS'
 
 Changing rtp entry of residue 49 LYSN to 'LYS'
 
 Changing rtp entry of residue 59 LYSN to 'LYS'
 
-Changing rtp entry of residue 65 LYS to 'LYSH'
+Changing rtp entry of residue 65 LYSN to 'LYS'
 
 Changing rtp entry of residue 74 LYSN to 'LYS'
 
@@ -336,15 +336,15 @@ Changing rtp entry of residue 93 CYS to 'CYSH'
 
 Changing rtp entry of residue 101 LYSN to 'LYS'
 
-Changing rtp entry of residue 110 LYS to 'LYSH'
+Changing rtp entry of residue 110 LYSN to 'LYS'
 
 Changing rtp entry of residue 138 CYS to 'CYSH'
 
-Changing rtp entry of residue 146 LYS to 'LYSH'
+Changing rtp entry of residue 146 LYSN to 'LYS'
 
-Changing rtp entry of residue 153 LYSN to 'LYS'
+Changing rtp entry of residue 153 LYS to 'LYSH'
 
-Changing rtp entry of residue 154 LYSN to 'LYS'
+Changing rtp entry of residue 154 LYS to 'LYSH'
 Select start terminus type for MET-1
  0: NH3+
  1: ZWITTERION_NH3+ (only use with zwitterions containing exactly one residue)
@@ -396,5 +396,5 @@ The Oplsaa force field is used.
 
 		--------- ETON ESAELP ------------
 
-GROMACS reminds you: "Don't Grumble, Give a Whistle !" (Monty Python)
+GROMACS reminds you: "You Fill Me With Inertia" (The Long Blondes)
 

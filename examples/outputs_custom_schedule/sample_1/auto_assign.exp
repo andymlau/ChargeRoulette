@@ -16,7 +16,7 @@ set lysine {48 65 153}
 set arginine {17}
 set histidine {20}
 
-spawn bash /home/andy/Github/ChargeRoulette/examples/outputs/sample_1/run_pdb2gmx.sh
+spawn bash /home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_1/run_pdb2gmx.sh
 
 expect  {
 

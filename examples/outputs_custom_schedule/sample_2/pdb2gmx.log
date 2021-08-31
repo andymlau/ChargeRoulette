@@ -1,4 +1,4 @@
-spawn bash /home/andy/Github/ChargeRoulette/examples/outputs/sample_2/run_pdb2gmx.sh
+spawn bash /home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_2/run_pdb2gmx.sh
                      :-) GROMACS - gmx pdb2gmx, 2021.3 (-:
 
                             GROMACS is written by:
@@ -36,7 +36,7 @@ Executable:   /usr/local/gromacs/bin/gmx
 Data prefix:  /usr/local/gromacs
 Working dir:  /home/andy/Github/ChargeRoulette
 Command line:
-  gmx pdb2gmx -f /home/andy/Github/ChargeRoulette/examples/inputs/2GRN.pdb-residue_depth.pdb -o /home/andy/Github/ChargeRoulette/examples/outputs/sample_2/out.pdb -p /home/andy/Github/ChargeRoulette/examples/outputs/sample_2/topol.top -i /home/andy/Github/ChargeRoulette/examples/outputs/sample_2/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
+  gmx pdb2gmx -f /home/andy/Github/ChargeRoulette/examples/inputs/2GRN.pdb-residue_depth.pdb -o /home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_2/out.pdb -p /home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_2/topol.top -i /home/andy/Github/ChargeRoulette/examples/outputs_custom_schedule/sample_2/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
 
 Using the Oplsaa force field in directory oplsaa.ff
 
@@ -396,5 +396,5 @@ The Oplsaa force field is used.
 
 		--------- ETON ESAELP ------------
 
-GROMACS reminds you: "Don't Grumble, Give a Whistle !" (Monty Python)
+GROMACS reminds you: "They Paint Their Faces So Differently From Ours" (Gogol Bordello)
 

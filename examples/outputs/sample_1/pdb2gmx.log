@@ -1,4 +1,4 @@
-spawn bash /home/andy/Github/gasMD/examples/outputs/sample_1/run_pdb2gmx.sh
+spawn bash /home/andy/Github/ChargeRoulette/examples/outputs/sample_1/run_pdb2gmx.sh
                      :-) GROMACS - gmx pdb2gmx, 2021.3 (-:
 
                             GROMACS is written by:
@@ -34,15 +34,15 @@ of the License, or (at your option) any later version.
 GROMACS:      gmx pdb2gmx, version 2021.3
 Executable:   /usr/local/gromacs/bin/gmx
 Data prefix:  /usr/local/gromacs
-Working dir:  /home/andy/Github/gasMD
+Working dir:  /home/andy/Github/ChargeRoulette
 Command line:
-  gmx pdb2gmx -f /home/andy/Github/gasMD/examples/inputs/2GRN.pdb-residue_depth.pdb -o /home/andy/Github/gasMD/examples/outputs/sample_1/out.pdb -p /home/andy/Github/gasMD/examples/outputs/sample_1/topol.top -i /home/andy/Github/gasMD/examples/outputs/sample_1/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
+  gmx pdb2gmx -f /home/andy/Github/ChargeRoulette/examples/inputs/2GRN.pdb-residue_depth.pdb -o /home/andy/Github/ChargeRoulette/examples/outputs/sample_1/out.pdb -p /home/andy/Github/ChargeRoulette/examples/outputs/sample_1/topol.top -i /home/andy/Github/ChargeRoulette/examples/outputs/sample_1/posre.itp -v -heavyh -ff oplsaa -water none -lys -arg -asp -glu -his -ter -renum -merge all
 
 Using the Oplsaa force field in directory oplsaa.ff
 
 going to rename oplsaa.ff/aminoacids.r2b
 Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.r2b
-Reading /home/andy/Github/gasMD/examples/inputs/2GRN.pdb-residue_depth.pdb...
+Reading /home/andy/Github/ChargeRoulette/examples/inputs/2GRN.pdb-residue_depth.pdb...
 Read '', 1261 atoms
 Renaming atom 'CD1' in residue 4 ILE to 'CD'
 Renaming atom 'CD1' in residue 45 ILE to 'CD'
@@ -73,8 +73,6 @@ Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoaci
 Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.n.tdb
 Opening force field file /usr/local/gromacs/share/gromacs/top/oplsaa.ff/aminoacids.c.tdb
 
-Back Off! I just backed up /home/andy/Github/gasMD/examples/outputs/sample_1/topol.top to /home/andy/Github/gasMD/examples/outputs/sample_1/#topol.top.1#
-
 Processing chain 1 'A' (1261 atoms, 157 residues)
 Which LYSINE type do you want for residue 14
 0. Not protonated (charge 0) (LYS)
@@ -85,7 +83,7 @@ Which LYSINE type do you want for residue 18
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:1
+Type a number:0
 Which LYSINE type do you want for residue 30
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
@@ -95,7 +93,7 @@ Which LYSINE type do you want for residue 48
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:0
+Type a number:1
 Which LYSINE type do you want for residue 49
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
@@ -115,7 +113,7 @@ Which LYSINE type do you want for residue 74
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:1
+Type a number:0
 Which LYSINE type do you want for residue 76
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
@@ -125,7 +123,7 @@ Which LYSINE type do you want for residue 101
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:1
+Type a number:0
 Which LYSINE type do you want for residue 110
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
@@ -140,12 +138,12 @@ Which LYSINE type do you want for residue 153
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:0
+Type a number:1
 Which LYSINE type do you want for residue 154
 0. Not protonated (charge 0) (LYS)
 1. Protonated (charge +1) (LYSH)
 
-Type a number:1
+Type a number:0
 Which ARGININE type do you want for residue 8
 0. Not protonated (charge 0) (ARGN)
 1. Protonated (charge +1) (ARG)
@@ -160,7 +158,7 @@ Which ARGININE type do you want for residue 17
 0. Not protonated (charge 0) (ARGN)
 1. Protonated (charge +1) (ARG)
 
-Type a number:0
+Type a number:1
 Which ARGININE type do you want for residue 61
 0. Not protonated (charge 0) (ARGN)
 1. Protonated (charge +1) (ARG)
@@ -282,7 +280,7 @@ Which HISTIDINE type do you want for residue 20
 2. H on ND1 and NE2 (HISH)
 3. Coupled to Heme (HIS1)
 
-Type a number:0
+Type a number:2
 Which HISTIDINE type do you want for residue 83
 0. H on ND1 only (HISD)
 1. H on NE2 only (HISE)
@@ -296,9 +294,9 @@ Identified residue MET1 as a starting terminus.
 Identified residue PRO157 as a ending terminus.
 8 out of 8 lines of specbond.dat converted successfully
 Special Atom Distance matrix:
-                    MET1  HISD20   MET36   MET39   CYS43   MET62   CYS75
+                    MET1  HISH20   MET36   MET39   CYS43   MET62   CYS75
                      SD7  NE2164   SD280   SD304   SG342   SD487   SG592
-  HISD20  NE2164   3.248
+  HISH20  NE2164   3.248
    MET36   SD280   2.058   1.450
    MET39   SD304   1.246   2.090   1.107
    CYS43   SG342   2.579   1.088   1.242   1.335
@@ -314,13 +312,13 @@ Special Atom Distance matrix:
 
 Changing rtp entry of residue 14 LYSN to 'LYS'
 
-Changing rtp entry of residue 18 LYS to 'LYSH'
+Changing rtp entry of residue 18 LYSN to 'LYS'
 
 Changing rtp entry of residue 30 LYSN to 'LYS'
 
 Changing rtp entry of residue 43 CYS to 'CYSH'
 
-Changing rtp entry of residue 48 LYSN to 'LYS'
+Changing rtp entry of residue 48 LYS to 'LYSH'
 
 Changing rtp entry of residue 49 LYSN to 'LYS'
 
@@ -328,7 +326,7 @@ Changing rtp entry of residue 59 LYSN to 'LYS'
 
 Changing rtp entry of residue 65 LYS to 'LYSH'
 
-Changing rtp entry of residue 74 LYS to 'LYSH'
+Changing rtp entry of residue 74 LYSN to 'LYS'
 
 Changing rtp entry of residue 75 CYS to 'CYSH'
 
@@ -336,7 +334,7 @@ Changing rtp entry of residue 76 LYSN to 'LYS'
 
 Changing rtp entry of residue 93 CYS to 'CYSH'
 
-Changing rtp entry of residue 101 LYS to 'LYSH'
+Changing rtp entry of residue 101 LYSN to 'LYS'
 
 Changing rtp entry of residue 110 LYSN to 'LYS'
 
@@ -344,9 +342,9 @@ Changing rtp entry of residue 138 CYS to 'CYSH'
 
 Changing rtp entry of residue 146 LYSN to 'LYS'
 
-Changing rtp entry of residue 153 LYSN to 'LYS'
+Changing rtp entry of residue 153 LYS to 'LYSH'
 
-Changing rtp entry of residue 154 LYS to 'LYSH'
+Changing rtp entry of residue 154 LYSN to 'LYS'
 Select start terminus type for MET-1
  0: NH3+
  1: ZWITTERION_NH3+ (only use with zwitterions containing exactly one residue)
@@ -379,7 +377,7 @@ Keeping all generated dihedrals
 
 Making cmap torsions...
 
-There are 6883 dihedrals,  491 impropers, 4641 angles
+There are 6883 dihedrals,  493 impropers, 4639 angles
           6725 pairs,     2565 bonds and     0 virtual sites
 
 Total mass 17924.854 a.m.u.
@@ -388,17 +386,15 @@ Total charge 5.000 e
 
 Writing topology
 
-Back Off! I just backed up /home/andy/Github/gasMD/examples/outputs/sample_1/posre.itp to /home/andy/Github/gasMD/examples/outputs/sample_1/#posre.itp.1#
-
 Writing coordinate file...
 
 		--------- PLEASE NOTE ------------
 
-You have successfully generated a topology from: /home/andy/Github/gasMD/examples/inputs/2GRN.pdb-residue_depth.pdb.
+You have successfully generated a topology from: /home/andy/Github/ChargeRoulette/examples/inputs/2GRN.pdb-residue_depth.pdb.
 
 The Oplsaa force field is used.
 
 		--------- ETON ESAELP ------------
 
-GROMACS reminds you: "I am driven by two main philosophies: know more today about the world than I knew yesterday and lessen the suffering of others. You'd be surprised how far that gets you." (Neil deGrasse Tyson)
+GROMACS reminds you: "Everybody's Good Enough For Some Change" (LIVE)
 
